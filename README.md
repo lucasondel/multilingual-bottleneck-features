@@ -1,12 +1,4 @@
-README FILE FOR BUT/PHONEXIA BOTTLENECK FEATURE EXTRACTOR
-=========================================================
-September 26, 2017
-
-Pavel Matejka ... matejkap@fit.vutbr.cz
-Anna Silnova  ... isilnova@fit.vutbr.cz
-Oldrich Plchot ... iplchot@fit.vutbr.cz
-Frantisek Grezl ... grezl@fit.vutbr.cz
-Jan "Honza" Cernocky ... cernocky@fit.vutbr.cz
+# BUT/PHONEXIA BOTTLENECK FEATURE EXTRACTOR
 
 The BUT/PHONEXIA Bottleneck feature extractor is a tool for extracting
 bottleneck features or phoneme classes posteriors from audio signal.
@@ -14,26 +6,29 @@ The goal is to provide a tool for extracting such features to people who
 do not have access to the databases, do not have capacity to train it or
 to those who want to use it just as complementary features.
 
-LICENSE
-=======
+## Authors
+* [Lucas Ondel](iondel@fit.vutbr.cz) 
+* [Pavel Matejka](matejkap@fit.vutbr.cz)
+* [Anna Silnova](isilnova@fit.vutbr.cz)
+* [Oldrich Plchot](iplchot@fit.vutbr.cz)
+* [Frantisek Grezl](grezl@fit.vutbr.cz)
+* [Jan "Honza" Cernocky](cernocky@fit.vutbr.cz)
 
+## License
 The models (pretrained networks) are released for noncommercial usage
 under CC BY-NC-ND 4.0 license (https://creativecommons.org/licenses/by-nc-nd/4.0/)
 and python code under Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0).
 More information in LICENSE
 
 
-MODELS DESCRIPTION
-==================
-
+## Models Description
 All networks with an 80-dimensional bottleneck layer are trained using a
 context of MEL filterbanks input features (HCopy configuration file is
 below).
 
 There are 3 pretrained networks provided with this release:
 
-1. FisherEnglish_FBANK_HL500_SBN80_PhnStates120.npz
----------------------------------------------------
+### 1. FisherEnglish_FBANK_HL500_SBN80_PhnStates120.npz
 
 Trained on Fisher English with 120 phoneme states as output classes (40 phonemes, 3 state for each phoneme)
 The training corpora are:
@@ -41,18 +36,17 @@ The training corpora are:
    * LDC2004T19 Fisher English Training Speech Part 1 Transcripts
    * LDC2005S13 Fisher English Training Part 2, Speech
    * LDC2005T19 Fisher English Training Part 2, Transcripts
+   
+location: `nn_weights/FisherEnglish_FBANK_HL500_SBN80_PhnStates120.npz`
 
-2. FisherEnglish_FBANK_HL500_SBN80_triphones2423.npz
-----------------------------------------------------
+### 2. FisherEnglish_FBANK_HL500_SBN80_triphones2423.npz
+Trained on Fisher English with 2423 triphones as output classes
+The training corpora are the same as in 1)
 
- Trained on Fisher English with 2423 triphones as output classes
- The training corpora are the same as in 1)
+location: `nn_weights/FisherEnglish_FBANK_HL500_SBN80_triphones2423.npz`
 
-3. Babel-ML17_FBANK_HL1500_SBN80_PhnStates3096.npz
---------------------------------------------------
-
-Trained on 17 languages from IARPA BABEL project
-https://www.iarpa.gov/index.php/research-programs/babel
+### 3. Babel-ML17_FBANK_HL1500_SBN80_PhnStates3096.npz
+Trained on 17 languages from [IARPA BABEL project](https://www.iarpa.gov/index.php/research-programs/babel)
 The BN is trained as Multilingual Bottleneck with 3096 output classes
 (3 phoneme states per each language stacked together).
 The training corpora are:
@@ -75,6 +69,10 @@ And other corpora not yet released by LDC
     * IARPA Babel Kazakh Language Pack IARPA-babel302
     * IARPA Babel Telugu Language Pack IARPA-babel303
     * IARPA Babel Lithuanian Language Pack IARPA-babel304
+    
+location: `nn_weights/Babel-ML17_FBANK_HL1500_SBN80_PhnStates3096.npz`
+
+## Feature Extraction
 
 In addition, for each bottleneck feature extractor, we provide the
 script and models to extract final posterior probabilities.
