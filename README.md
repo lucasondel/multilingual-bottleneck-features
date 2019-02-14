@@ -1,12 +1,4 @@
-README FILE FOR BUT/PHONEXIA BOTTLENECK FEATURE EXTRACTOR
-=========================================================
-September 26, 2017
-
-Pavel Matejka ... matejkap@fit.vutbr.cz
-Anna Silnova  ... isilnova@fit.vutbr.cz
-Oldrich Plchot ... iplchot@fit.vutbr.cz
-Frantisek Grezl ... grezl@fit.vutbr.cz
-Jan "Honza" Cernocky ... cernocky@fit.vutbr.cz
+# BUT/PHONEXIA BOTTLENECK FEATURE EXTRACTOR
 
 The BUT/PHONEXIA Bottleneck feature extractor is a tool for extracting
 bottleneck features or phoneme classes posteriors from audio signal.
@@ -14,73 +6,103 @@ The goal is to provide a tool for extracting such features to people who
 do not have access to the databases, do not have capacity to train it or
 to those who want to use it just as complementary features.
 
-LICENSE
-=======
+## Authors
+* [Lucas Ondel](iondel@fit.vutbr.cz) 
+* [Pavel Matejka](matejkap@fit.vutbr.cz)
+* [Anna Silnova](isilnova@fit.vutbr.cz)
+* [Oldrich Plchot](iplchot@fit.vutbr.cz)
+* [Frantisek Grezl](grezl@fit.vutbr.cz)
+* [Jan "Honza" Cernocky](cernocky@fit.vutbr.cz)
 
+## License
 The models (pretrained networks) are released for noncommercial usage
 under CC BY-NC-ND 4.0 license (https://creativecommons.org/licenses/by-nc-nd/4.0/)
 and python code under Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0).
 More information in LICENSE
 
 
-MODELS DESCRIPTION
-==================
-
-All networks with an 80-dimensional bottleneck layer are trained using a
-context of MEL filterbanks input features (HCopy configuration file is
-below).
-
+## Models Description
 There are 3 pretrained networks provided with this release:
 
-1. FisherEnglish_FBANK_HL500_SBN80_PhnStates120.npz
----------------------------------------------------
+### 1. FisherEnglish_FBANK_HL500_SBN80_PhnStates120
 
 Trained on Fisher English with 120 phoneme states as output classes (40 phonemes, 3 state for each phoneme)
 The training corpora are:
-   * LDC2004S13 Fisher English Training Speech Part 1 Speech
-   * LDC2004T19 Fisher English Training Speech Part 1 Transcripts
-   * LDC2005S13 Fisher English Training Part 2, Speech
-   * LDC2005T19 Fisher English Training Part 2, Transcripts
+  * LDC2004S13 Fisher English Training Speech Part 1 Speech
+  * LDC2004T19 Fisher English Training Speech Part 1 Transcripts
+  * LDC2005S13 Fisher English Training Part 2, Speech
+  * LDC2005T19 Fisher English Training Part 2, Transcripts
+   
+location: `nn_weights/FisherEnglish_FBANK_HL500_SBN80_PhnStates120.npz`
 
-2. FisherEnglish_FBANK_HL500_SBN80_triphones2423.npz
-----------------------------------------------------
+### 2. FisherEnglish_FBANK_HL500_SBN80_triphones2423
+Trained on Fisher English with 2423 triphones as output classes
+The training corpora are the same as in 1)
 
- Trained on Fisher English with 2423 triphones as output classes
- The training corpora are the same as in 1)
+location: `nn_weights/FisherEnglish_FBANK_HL500_SBN80_triphones2423.npz`
 
-3. Babel-ML17_FBANK_HL1500_SBN80_PhnStates3096.npz
---------------------------------------------------
-
-Trained on 17 languages from IARPA BABEL project
-https://www.iarpa.gov/index.php/research-programs/babel
+### 3. Babel-ML17_FBANK_HL1500_SBN80_PhnStates3096
+Trained on 17 languages from [IARPA BABEL project](https://www.iarpa.gov/index.php/research-programs/babel)
 The BN is trained as Multilingual Bottleneck with 3096 output classes
-(3 phoneme states per each language stacked together).
-The training corpora are:
-    * LDC2016S02 IARPA Babel Cantonese Language Pack IARPA-babel101b-v0.4c
-    * LDC2016S06 IARPA Babel Assamese Language Pack IARPA-babel102b-v0.5a
-    * LDC2016S08 IARPA Babel Bengali Language Pack IARPA-babel103b-v0.4b
-    * LDC2016S09 IARPA Babel Pashto Language Pack IARPA-babel104b-v0.4bY
-    * LDC2016S10 IARPA Babel Turkish Language Pack IARPA-babel105b-v0.5
-    * LDC2016S13 IARPA Babel Tagalog Language Pack IARPA-babel106-v0.2g
-    * LDC2017S01 IARPA Babel Vietnamese Language Pack IARPA-babel107b-v0.7
-    * LDC2017S03 IARPA Babel Haitian Creole Language Pack IARPA-babel201b-v0.2b
-    * LDC2017S08 IARPA Babel Lao Language Pack IARPA-babel203b-v3.1a
-    * LDC2017S13 IARPA Babel Tamil Language Pack IARPA-babel204b-v1.1b
-    * LDC2017S19 IARPA Babel Zulu Language Pack IARPA-babel206b-v0.1e
+(3 phoneme states per each language stacked together). The training corpora are:
+  *  LDC2016S02 IARPA Babel Cantonese Language Pack IARPA-babel101b-v0.4c"
+  *  LDC2016S06 IARPA Babel Assamese Language Pack IARPA-babel102b-v0.5a" 
+  * LDC2016S08 IARPA Babel Bengali Language Pack IARPA-babel103b-v0.4b
+  * LDC2016S09 IARPA Babel Pashto Language Pack IARPA-babel104b-v0.4bY
+  * LDC2016S10 IARPA Babel Turkish Language Pack IARPA-babel105b-v0.5
+  * LDC2016S13 IARPA Babel Tagalog Language Pack IARPA-babel106-v0.2g
+  * LDC2017S01 IARPA Babel Vietnamese Language Pack IARPA-babel107b-v0.7
+  * LDC2017S03 IARPA Babel Haitian Creole Language Pack IARPA-babel201b-v0.2b
+  * LDC2017S08 IARPA Babel Lao Language Pack IARPA-babel203b-v3.1a
+  * LDC2017S13 IARPA Babel Tamil Language Pack IARPA-babel204b-v1.1b
+  * LDC2017S19 IARPA Babel Zulu Language Pack IARPA-babel206b-v0.1e
 
-And other corpora not yet released by LDC
-    * IARPA Babel Kurmanji (Kurdish) Language Pack IARPA-babel205
-    * IARPA Babel TokPisin Language Pack IARPA-babel207
-    * IARPA Babel Cebuano Language Pack IARPA-babel301
-    * IARPA Babel Kazakh Language Pack IARPA-babel302
-    * IARPA Babel Telugu Language Pack IARPA-babel303
-    * IARPA Babel Lithuanian Language Pack IARPA-babel304
+And other corpora not yet released by LDC:
+  * IARPA Babel Kurmanji (Kurdish) Language Pack IARPA-babel205
+  * IARPA Babel TokPisin Language Pack IARPA-babel207
+  * IARPA Babel Cebuano Language Pack IARPA-babel301
+  * IARPA Babel Kazakh Language Pack IARPA-babel302
+  * IARPA Babel Telugu Language Pack IARPA-babel303
+  * IARPA Babel Lithuanian Language Pack IARPA-babel304
+    
+location: `nn_weights/Babel-ML17_FBANK_HL1500_SBN80_PhnStates3096.npz`
 
-In addition, for each bottleneck feature extractor, we provide the
-script and models to extract final posterior probabilities.
+All networks were trained using a context of MEL filterbanks input
+features extracted with [HTK](http://htk.eng.cam.ac.uk/)
+with the following "HCopy" configuration (see
+[HTK documentation](http://www.ee.columbia.edu/~dpwe/LabROSA/doc/HTKBook21/node78.html)):
+```
+SOURCEKIND   = WAVEFORM
+SOURCEFORMAT = WAV
+TARGETFORMAT = HTK
+TARGETKIND   = FBANK
+LOFREQ       = 64
+HIFREQ       = 3800
+NUMCHANS     = 24       # number of critical bands
+USEPOWER     = T        # using power spectrum
+USEHAMMING   = T        # use hamming window on speech frame
+ENORMALISE   = F
+PREEMCOEF    = 0        # no preemphase
+TARGETRATE   = 100000   # 10 ms frame rate
+WINDOWSIZE   = 250000   # 25 ms window
+SAVEWITHCRC  = F
+#CEPLIFTER   = 22
+NUMCEPS      = 12
+WARPFREQ     = 1
+WARPLCUTOFF  = 3000
+WARPUCUTOFF  = 3000
+ADDDITHER    = 0.1
+```
 
-======================================================
-All of the python scripts are developed under python 2.7
+## Extracting Features/Posteriors
+
+In addition to the trained networks, we provide the
+script and models to extract either the bottleneck features 
+or the final posterior probabilities.
+
+### Requirements
+Scripts supports python 3.7+ and most likely (though not tested) python 3+  
+
 
 USAGE AND FILE DESCRIPTION
 
@@ -159,29 +181,6 @@ LICENSE
 Scripts and model files for the Babel BNF extractor (3) can be used for research and educational purposes only. Scripts and model files for the Fisher-based BNF extractors (1,2) can be used only by participants of the NIST LRE2017 and also only for research and educational purposes. It is explicitly forbidden to use the Fisher-based models by any party which does not have a proper license for the FISHER corpora (LDC2004S13, LDC2004T19, LDC2005S13, LDC2005T19). Any use of the software and models described above must be of non-commercial character. For any other use, please contact BUT and/or LDC representative.
 
 
-======================================================
-HCopy configuration file for the MEL Filter bank extraction
-
-SOURCEKIND   = WAVEFORM
-SOURCEFORMAT = WAV
-TARGETFORMAT = HTK
-TARGETKIND   = FBANK
-LOFREQ       = 64
-HIFREQ       = 3800
-NUMCHANS     = 24       # number of critical bands
-USEPOWER     = T        # using power spectrum
-USEHAMMING   = T        # use hamming window on speech frame
-ENORMALISE   = F
-PREEMCOEF    = 0        # no preemphase
-TARGETRATE   = 100000   # 10 ms frame rate
-WINDOWSIZE   = 250000   # 25 ms window
-SAVEWITHCRC  = F
-#CEPLIFTER   = 22
-NUMCEPS      = 12
-WARPFREQ     = 1
-WARPLCUTOFF  = 3000
-WARPUCUTOFF  = 3000
-ADDDITHER    = 0.1
 
 
 
