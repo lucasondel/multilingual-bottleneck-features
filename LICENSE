@@ -1,0 +1,31 @@
+There are separate license for pretrained models and python code.
+
+===  PRETRAINED NETWORKS / MODELS ===
+
+Pretrained networks:
+FisherEnglish_FBANK_HL500_SBN80_PhnStates120.npz
+FisherEnglish_FBANK_HL500_SBN80_triphones2423.npz
+Babel-ML17_FBANK_HL1500_SBN80_PhnStates3096.npz
+
+are released under Creative Commons Attribution Non Commercial No Derivatives 4.0 (CC BY-NC-ND 4.0) license. These models are relased only for NonCommercial use.
+
+You may obtain a copy of the License at
+https://creativecommons.org/licenses/by-nc-nd/4.0/
+https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+
+
+===  PYTHON CODE  ===
+
+Copyright [BUT-BottleneckFeatureExtractor] [BUT/Phonexia]
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
