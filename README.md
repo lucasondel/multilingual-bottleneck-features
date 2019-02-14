@@ -94,13 +94,15 @@ WARPUCUTOFF  = 3000
 ADDDITHER    = 0.1
 ```
 
-## Extracting Features
+## Extracting Features/Posteriors
 
-In addition to the trained networks, for each bottleneck feature extractor, we provide the
-script and models to extract final posterior probabilities.
+In addition to the trained networks, we provide the
+script and models to extract either the bottleneck features 
+or the final posterior probabilities.
 
-======================================================
-All of the python scripts are developed under python 2.7
+### Requirements
+Scripts supports python 3.7+ and most likely (though not tested) python 3+  
+
 
 USAGE AND FILE DESCRIPTION
 
@@ -179,29 +181,6 @@ LICENSE
 Scripts and model files for the Babel BNF extractor (3) can be used for research and educational purposes only. Scripts and model files for the Fisher-based BNF extractors (1,2) can be used only by participants of the NIST LRE2017 and also only for research and educational purposes. It is explicitly forbidden to use the Fisher-based models by any party which does not have a proper license for the FISHER corpora (LDC2004S13, LDC2004T19, LDC2005S13, LDC2005T19). Any use of the software and models described above must be of non-commercial character. For any other use, please contact BUT and/or LDC representative.
 
 
-======================================================
-HCopy configuration file for the MEL Filter bank extraction
-
-SOURCEKIND   = WAVEFORM
-SOURCEFORMAT = WAV
-TARGETFORMAT = HTK
-TARGETKIND   = FBANK
-LOFREQ       = 64
-HIFREQ       = 3800
-NUMCHANS     = 24       # number of critical bands
-USEPOWER     = T        # using power spectrum
-USEHAMMING   = T        # use hamming window on speech frame
-ENORMALISE   = F
-PREEMCOEF    = 0        # no preemphase
-TARGETRATE   = 100000   # 10 ms frame rate
-WINDOWSIZE   = 250000   # 25 ms window
-SAVEWITHCRC  = F
-#CEPLIFTER   = 22
-NUMCEPS      = 12
-WARPFREQ     = 1
-WARPLCUTOFF  = 3000
-WARPUCUTOFF  = 3000
-ADDDITHER    = 0.1
 
 
 
