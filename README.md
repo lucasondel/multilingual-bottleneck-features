@@ -127,6 +127,10 @@ Or using the pipe command:
 $ mkdir mbnfea
 $ cat example.scp | audio2bottleneck --model babel-17 --outdir mbnfea/ -
 ```
+Note:
+  - if no model is specified, the "babel-17" model will be selected by default
+  - the input WAV file has to be sampled at 8 kHz (use `sox - -t wav - rate 8000` to resample your audio files)
+  - the `sph2pipe` command in the example above is specific to the data (in this case this is an excerpt of our TIMIT "scp" file) and you will probably not need it if you work with other data set
 
 ## Referencing
 
@@ -148,7 +152,7 @@ author = "Radek Fer and Pavel Matejka and Frantisek Grezl and Oldrich Plchot and
 ```
 
 ## Authors
-* Lucas Ondel iondel@fit.vutbr.cz 
+* Lucas Ondel iondel@fit.vutbr.cz   (only packaging of the python 3+ scripts)
 * Anna Silnova isilnova@fit.vutbr.cz
 * Pavel Matejka matejkap@fit.vutbr.cz
 * Oldrich Plchot iplchot@fit.vutbr.cz
