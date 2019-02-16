@@ -94,11 +94,47 @@ WARPUCUTOFF  = 3000
 ADDDITHER    = 0.1
 ```
 
-## Extracting Features/Posteriors
+## Requirements
 
-In addition to the trained networks, we provide the
-script and models to extract either the bottleneck features 
-or the final posterior probabilities.
+The implementation runs on python 3.7+ and most likely (though not tested) python 3+. Your distribution will need the following packages:
+  - numpy
+  - scipy
+  - numexpr
+
+Note: these dependencies are specify in the `setup.py` file so they should be automatically installed.
+
+## Installation 
+
+To install the script to extract features run in the root directory of the repository:
+```
+$ python setup.py install
+```
+## Extracting features
+
+Once the package is installed you can extract the multi-lingual bottleneck features with the utility `audio2bottleneck`. Given a "scp" file, say `example.scp`, formatted as in [Kaldi](https://github.com/kaldi-asr/kaldi) recipes:
+```
+faem0_si1392 sph2pipe -f wav /mnt/matylda2/data/TIMIT/timit/train/dr2/faem0/si1392.wav | sox - -t wav - rate 8000 |
+faem0_si2022 sph2pipe -f wav /mnt/matylda2/data/TIMIT/timit/train/dr2/faem0/si2022.wav | sox - -t wav - rate 8000 |
+faem0_si762 sph2pipe -f wav /mnt/matylda2/data/TIMIT/timit/train/dr2/faem0/si762.wav | sox - -t wav - rate 8000 |
+faem0_sx132 sph2pipe -f wav /mnt/matylda2/data/TIMIT/timit/train/dr2/faem0/sx132.wav | sox - -t wav - rate 8000 |
+faem0_sx222 sph2pipe -f wav /mnt/matylda2/data/TIMIT/timit/train/dr2/faem0/sx222.wav | sox - -t wav - rate 8000 |
+faem0_sx312 sph2pipe -f wav /mnt/matylda2/data/TIMIT/timit/train/dr2/faem0/sx312.wav | sox - -t wav - rate 8000 |
+faem0_sx402 sph2pipe -f wav /mnt/matylda2/data/TIMIT/timit/train/dr2/faem0/sx402.wav | sox - -t wav - rate 8000 |
+faem0_sx42 sph2pipe -f wav /mnt/matylda2/data/TIMIT/timit/train/dr2/faem0/sx42.wav | sox - -t wav - rate 8000 |
+fajw0_si1263 sph2pipe -f wav /mnt/matylda2/data/TIMIT/timit/train/dr2/fajw0/si1263.wav | sox - -t wav - rate 8000 |
+fajw0_si1893 sph2pipe -f wav /mnt/matylda2/data/TIMIT/timit/train/dr2/fajw0/si1893.wav | sox - -t wav - rate 8000 |
+```
+
+you can extract the features for all these file by running:
+```
+$ mkdir mbnfea
+$ audio2bottleneck --model babel-17 --outdir mbnfea/ example.scp	 
+```
+Or using the pipe command: 
+```
+$ mkdir mbnfea
+$ cat example.scp | audio2bottleneck --model babel-17 --outdir mbnfea/ -
+```
 
 ### Requirements
 Scripts supports python 3.7+ and most likely (though not tested) python 3+  
