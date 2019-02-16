@@ -6,19 +6,11 @@ The goal is to provide a tool for extracting such features to people who
 do not have access to the databases, do not have capacity to train it or
 to those who want to use it just as complementary features.
 
-## Authors
-* [Lucas Ondel](iondel@fit.vutbr.cz) 
-* [Pavel Matejka](matejkap@fit.vutbr.cz)
-* [Anna Silnova](isilnova@fit.vutbr.cz)
-* [Oldrich Plchot](iplchot@fit.vutbr.cz)
-* [Frantisek Grezl](grezl@fit.vutbr.cz)
-* [Jan "Honza" Cernocky](cernocky@fit.vutbr.cz)
-
 ## License
-The models (pretrained networks) are released for noncommercial usage
-under CC BY-NC-ND 4.0 license (https://creativecommons.org/licenses/by-nc-nd/4.0/)
-and python code under Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0).
-More information in LICENSE
+
+Scripts and model files for the Babel BNF extractor (3) can be used for research and educational purposes only. Scripts and model files for the Fisher-based BNF extractors (1,2) can be used only by participants of the NIST LRE2017 and also only for research and educational purposes. It is explicitly forbidden to use the Fisher-based models by any party which does not have a proper license for the FISHER corpora (LDC2004S13, LDC2004T19, LDC2005S13, LDC2005T19). Any use of the software and models described above must be of non-commercial character. For any other use, please contact BUT and/or LDC representative.
+
+Please see the `LICENSE` file for detailed information
 
 
 ## Models Description
@@ -136,70 +128,13 @@ $ mkdir mbnfea
 $ cat example.scp | audio2bottleneck --model babel-17 --outdir mbnfea/ -
 ```
 
-### Requirements
-Scripts supports python 3.7+ and most likely (though not tested) python 3+  
-
-
-USAGE AND FILE DESCRIPTION
-
-audio2bottleneck.py
-
-The script accepts 3 or 4 parameters
-python audio2bottleneck.py nn_weights input.wav output.fea vad.lab.gz
-
-nn_weights  ... weights of the pre-trained Neural Network.
-                Options are:
-                - FisherMono
-                - FisherTri
-                - BabelMulti
-input.wav   ... input audio file in wave format - only sampling frequency 8kHz
-                and linear16bit coding accepted
-output.fea  ... output feature file in HTK format
-vad.lab.gz  ... optional parameter - input label file in HTK label file format
-                all labels are considered as speech
-                - if this is not provided internal energy based VAD is computed
-                - VAD is used for to perform mean normalization of input features (global mean per input segment)
-
-
-bottleneck2posterior.py
-
-The script accepts 3 parameters
-python bottleneck2posterior.py nn_weights input.fea output.h5
-
-nn_weights  ... weights of the pre-trained Neural Network.
-		The choice of the network should be consistent with the network used to extract BN features
-                Options are:
-                - FisherMono (corresponds to FisherMono option of SBN extraction)
-                - FisherTri (corresponds to FisherTri)
-                - BabelMulti (corresponds to BabelMulti)
-input.fea  ... BN feature file - the output of the audio2bottleneck.py
-output.h5  ... output file to save posteriors to. Default format is h5 file. The result is saved to the dataset named 'posterior' in the output.h5 file.
-	       There is possibility to save the output to HTK feature file (can be done only for FisherEnglish_SBN80_PhnStates120 due to size limitations of HTK) or to text file.
-	       In order to do so, uncomment lines 69 (HTK file) or 70 (text file) of the script.
-
-
-See directory "example" and script run.sh for more information and example how to use it.
-
-Included files:
-README - this file
-license.txt - information about license
-nn_weights/*.npz - files containing neural network weight matrices.
-nn_weights/*.dict - files containing target labels used for training.
-nn_def.py - functions needed for nn operating
-utils.py - other functions needed
-gmm.py - GMM functionality, used when vad is computed
-audio2bottleneck.py - script for extracting bn features from audio (.raw or .wav) files using defined neural network weights
-bottleneck2posterior.py - script for extracting phoneme classes posteriors from bn features extracted with audio2bottleneck.py
-
-
-======================================================
-CITATION
+## Referencing
 
 When using this tool, please kindly cite our analysis paper:
 
 Radek Fer, Pavel Matejka, Frantisek Grezl, Oldrich Plchot, Karel Vesely, Jan Honza Cernocky, Multilingually trained bottleneck features in spoken language recognition, In Computer Speech & Language, Volume 46, Pages 252-267, 2017.
 
-
+```
 @article{Fer:CSL:2017,
 title = "Multilingually trained bottleneck features in spoken language recognition",
 journal = "Computer Speech & Language",
@@ -210,22 +145,12 @@ year = "2017",
 issn = "0885-2308",
 author = "Radek Fer and Pavel Matejka and Frantisek Grezl and Oldrich Plchot and Karel Vesely and Jan Honza Cernocky",
 }
+```
 
-======================================================
-LICENSE
-
-Scripts and model files for the Babel BNF extractor (3) can be used for research and educational purposes only. Scripts and model files for the Fisher-based BNF extractors (1,2) can be used only by participants of the NIST LRE2017 and also only for research and educational purposes. It is explicitly forbidden to use the Fisher-based models by any party which does not have a proper license for the FISHER corpora (LDC2004S13, LDC2004T19, LDC2005S13, LDC2005T19). Any use of the software and models described above must be of non-commercial character. For any other use, please contact BUT and/or LDC representative.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Authors
+* Lucas Ondel iondel@fit.vutbr.cz 
+* Anna Silnova isilnova@fit.vutbr.cz
+* Pavel Matejka matejkap@fit.vutbr.cz
+* Oldrich Plchot iplchot@fit.vutbr.cz
+* Frantisek Grezlgrezl@fit.vutbr.cz  
+* Jan "Honza" Cernocky cernocky@fit.vutbr.cz
