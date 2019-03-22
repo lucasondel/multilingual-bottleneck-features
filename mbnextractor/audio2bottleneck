@@ -6,6 +6,7 @@ import argparse
 import io
 import logging
 import os
+import pkg_resources
 import subprocess
 import sys
 
@@ -20,12 +21,14 @@ logging.basicConfig(format= '%(levelname)s: %(message)s',level=logging.INFO)
 logger = logging.getLogger()
 
 
-package_dir, _ = os.path.split(mbnextractor.__file__)
+#package_dir, _ = os.path.split(mbnextractor.__file__)
+package_dir = os.path.dirname(__file__)
+rsrc = pkg_resources.resource_filename
 
 models = {
-    'fisher-monophone': os.path.join(package_dir, 'models', 'FisherEnglish_FBANK_HL500_SBN80_PhnStates120.npz'),
-    'fisher-triphone': os.path.join(package_dir, 'models', 'FisherEnglish_FBANK_HL500_SBN80_triphones2423.npz'),
-    'babel-17': os.path.join(package_dir, 'models', './nn_weights/Babel-ML17_FBANK_HL1500_SBN80_PhnStates3096.npz')
+    'fisher-monophone': rsrc(mbnextractor.__name__, 'models/FisherEnglish_FBANK_HL500_SBN80_PhnStates120.npz'),
+    'fisher-triphone': rsrc(mbnextractor.__name__, 'models/FisherEnglish_FBANK_HL500_SBN80_triphones2423.npz'),
+    'babel-17': rsrc(mbnextractor.__name__, 'models/Babel-ML17_FBANK_HL1500_SBN80_PhnStates3096.npz')
 }
 
 def read_signal(file_name):
